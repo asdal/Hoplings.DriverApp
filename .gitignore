@@ -1,0 +1,25 @@
+﻿# .NET & MAUI build output
+bin/
+obj/
+
+# Visual Studio / VS Code folders
+.vs/
+.vscode/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# User secrets & local config
+*.user
+*.suo
+
+# Mac junk
+.DS_Store
+
+# Logs
+*.log
+
+# MAUI platforms output
+**/Platforms/**/bin/
+**/Platforms/**/obj/
