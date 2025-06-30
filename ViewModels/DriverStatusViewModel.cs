@@ -1,0 +1,37 @@
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Hoplings.DriverApp.Services;
+using System.Windows.Input;
+
+namespace Hoplings.DriverApp.ViewModels
+{
+    public partial class DriverStatusViewModel : ObservableObject
+    {
+        private readonly HeartbeatService _heartbeatService;
+
+        [ObservableProperty]
+        private bool isOnline;
+
+        public IAsyncRelayCommand ToggleAvailabilityCommand { get; }
+
+        public DriverStatusViewModel(HeartbeatService heartbeatService)
+        {
+            _heartbeatService = heartbeatService;
+            ToggleAvailabilityCommand = new AsyncRelayCommand(ToggleAvailabilityAsync);
+        }
+
+        private async Task ToggleAvailabilityAsync()
+        {
+            if (IsOnline)
+            {
+                await _heartbeatService.StopAsync();
+                IsOnline = false;
+            }
+            else
+            {
+                await _heartbeatService.StartAsync();
+                IsOnline = true;
+            }
+        }
+    }
+}
