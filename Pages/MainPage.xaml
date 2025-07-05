@@ -7,20 +7,37 @@
 
     <VerticalStackLayout Padding="20">
 
+        <!-- ✅ Title -->
         <Label Text="Driver Availability"
                FontAttributes="Bold"
-               FontSize="20"
-               HorizontalOptions="Center" />
+               FontSize="30"
+               HorizontalOptions="Start" />
 
+        <!-- ✅ Online/Offline Toggle -->
         <Switch 
             IsToggled="{Binding IsOnline}"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Start" />
 
         <Button 
             Text="{Binding IsOnline, Converter={StaticResource BoolToAvailabilityConverter}}" 
             Command="{Binding ToggleAvailabilityCommand}"
-            HorizontalOptions="Center"
+            HorizontalOptions="Start"
             Margin="0,20,0,0" />
+
+        <!-- ✅ New: Show HubConnection State -->
+        <Label 
+            Text="{Binding HubConnectionState}"
+            FontSize="18"
+            TextColor="DarkBlue"
+            HorizontalOptions="Start"
+            Margin="0,30,0,0" />
+
+        <!-- ✅ New: Button to Check HubConnection State -->
+        <Button 
+            Text="Check SignalR Connection State"
+            Command="{Binding CheckConnectionStateCommand}"
+            HorizontalOptions="Start"
+            Margin="0,10,0,0" />
 
     </VerticalStackLayout>
 </ContentPage>

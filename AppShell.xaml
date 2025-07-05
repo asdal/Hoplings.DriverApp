@@ -1,21 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="Hoplings.DriverApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Hoplings.DriverApp.Pages"
-    Title="Hoplings.DriverApp">
+    Title="Hoplings.DriverApp"
+    FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="#222222"
+    Shell.TabBarForegroundColor="#FFFFFF"
+    Shell.TabBarTitleColor="#FFFFFF"
+    Shell.TabBarUnselectedColor="#888888"
+    Shell.TabBarDisabledColor="#555555"
+    Shell.BackgroundColor="#00FFAA">
 
-    <!-- 👇 Login Page Route -->
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate pages:LoginPage}"
-        Route="LoginPage" />
 
-    <!-- 👇 Main Page Route -->
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate pages:MainPage}"
-        Route="MainPage" />
 
+    <TabBar>
+        <Tab Title="Login" Icon="tab_login_dark.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:LoginPage}" Route="LoginPage" />
+        </Tab>
+
+        <Tab Title="Home" Icon="tab_home_dark.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" Route="MainPage" />
+        </Tab>
+    </TabBar>
 </Shell>
